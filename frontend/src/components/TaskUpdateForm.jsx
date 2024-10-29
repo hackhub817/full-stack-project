@@ -19,7 +19,7 @@ const UpdateTaskForm = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/task/${id}`,
+        `${window.location.origin}/api/task/${id}`,
         {
           status,
           remarks: [{ text: remarkText }],

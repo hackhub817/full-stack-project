@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const authRoutes = require("./routes/authRoutes");
 const projectRoutes = require("./routes/projectRoutes");
 const taskRoutes = require("./routes/taskRoutes");
+const path = require("path");
 
 const cookieParser = require("cookie-parser");
 
@@ -27,6 +28,11 @@ mongoose
   })
   .then(() => console.log("DB Connected"))
   .catch((error) => console.error("Database error:", error));
+
+app.get("/", (req, res) => {
+  app.use(express.static(path.resolve(__dirname, "frontend", "build")));
+  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/project", projectRoutes);

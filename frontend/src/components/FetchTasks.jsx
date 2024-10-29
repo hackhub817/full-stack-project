@@ -27,14 +27,14 @@ const FetchTasks = () => {
   const fetchProjectDetails = async () => {
     try {
       const projectResponse = await axios.get(
-        `http://localhost:5000/api/project/${id}`,
+        `${window.location.origin}/api/project/${id}`,
         { withCredentials: true }
       );
       setProject(projectResponse.data);
       console.log(projectResponse.data);
 
       const tasksResponse = await axios.get(
-        `http://localhost:5000/api/task/filtertasks/?projectId=${id}&status=${statusFilter}`,
+        `${window.location.origin}/api/task/filtertasks/?projectId=${id}&status=${statusFilter}`,
         { withCredentials: true }
       );
       setTasks(tasksResponse.data);
@@ -51,7 +51,7 @@ const FetchTasks = () => {
   const onDeleteTask = async (taskId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/task/${taskId}`,
+        `${window.location.origin}/api/task/${taskId}`,
         { withCredentials: true }
       );
       toast.success(response.data.message);

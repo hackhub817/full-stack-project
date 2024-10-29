@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.get(`http:///api/auth/logout`, {
+      await axios.get(`${window.location.origin}/api/auth/logout`, {
         withCredentials: true,
       });
       logout(navigate);

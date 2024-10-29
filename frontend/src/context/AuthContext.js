@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     const checkAuth = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/auth/check-auth",
+          `${window.location.origin}/api/auth/check-auth`,
           {
             withCredentials: true,
           }

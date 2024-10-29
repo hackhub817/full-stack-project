@@ -14,9 +14,12 @@ const AssignTask = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const { data } = await axios.get(`http://localhost:5000/api/auth/users`, {
-        withCredentials: true,
-      });
+      const { data } = await axios.get(
+        `${window.location.origin}/api/auth/users`,
+        {
+          withCredentials: true,
+        }
+      );
       setUsers(data);
     };
     fetchUsers();
@@ -29,7 +32,7 @@ const AssignTask = () => {
 
         if (user) {
           await axios.patch(
-            `http://localhost:5000/api/task/${id}/assign`,
+            `${window.location.origin}/api/task/${id}/assign`,
             {
               assignedUser: user.username,
             },

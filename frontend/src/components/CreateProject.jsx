@@ -16,7 +16,7 @@ const CreateProject = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/project/create",
+        `${window.location.origin}/api/project/create`,
         {
           title,
           description,
